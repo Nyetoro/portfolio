@@ -1,0 +1,515 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyetoro | Full Stack Developer</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#0f172a;
+            color:#fff;
+            line-height:1.6;
+        }
+
+        header{
+            position:fixed;
+            width:100%;
+            top:0;
+            background:rgba(15,23,42,.95);
+            backdrop-filter:blur(10px);
+            z-index:1000;
+        }
+
+        nav{
+            max-width:1200px;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:bold;
+            color:#38bdf8;
+        }
+
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:30px;
+        }
+
+        nav ul li a{
+            color:white;
+            text-decoration:none;
+            transition:.3s;
+        }
+
+        nav ul li a:hover{
+            color:#38bdf8;
+        }
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:120px 20px 60px;
+        }
+
+        .hero-content{
+            max-width:1200px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:50px;
+            align-items:center;
+        }
+
+        .hero-text h1{
+            font-size:60px;
+            margin-bottom:10px;
+        }
+
+        .hero-text h2{
+            color:#38bdf8;
+            margin-bottom:20px;
+        }
+
+        .hero-text p{
+            margin-bottom:30px;
+            color:#cbd5e1;
+        }
+
+        .buttons{
+            display:flex;
+            gap:15px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            padding:12px 25px;
+            border:none;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:bold;
+            transition:.3s;
+        }
+
+        .primary{
+            background:#38bdf8;
+            color:#000;
+        }
+
+        .secondary{
+            border:2px solid #38bdf8;
+            color:#38bdf8;
+        }
+
+        .btn:hover{
+            transform:translateY(-3px);
+        }
+
+        .hero-image{
+            text-align:center;
+        }
+
+        .hero-image img{
+            width:350px;
+            height:350px;
+            object-fit:cover;
+            border-radius:50%;
+            border:5px solid #38bdf8;
+        }
+
+        section{
+            padding:100px 20px;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:auto;
+        }
+
+        .section-title{
+            text-align:center;
+            margin-bottom:50px;
+        }
+
+        .section-title h2{
+            font-size:40px;
+            color:#38bdf8;
+        }
+
+        .about p{
+            color:#cbd5e1;
+            text-align:center;
+            max-width:800px;
+            margin:auto;
+        }
+
+        .skills-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:20px;
+        }
+
+        .skill-card{
+            background:#1e293b;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+        }
+
+        .skill-card i{
+            font-size:40px;
+            color:#38bdf8;
+            margin-bottom:15px;
+        }
+
+        .projects-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+        }
+
+        .project-card{
+            background:#1e293b;
+            padding:25px;
+            border-radius:15px;
+        }
+
+        .project-card h3{
+            color:#38bdf8;
+            margin-bottom:15px;
+        }
+
+        .services-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
+        }
+
+        .service-card{
+            background:#1e293b;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+        }
+
+        .service-card i{
+            font-size:35px;
+            color:#38bdf8;
+            margin-bottom:15px;
+        }
+
+        .contact-info{
+            text-align:center;
+        }
+
+        .contact-info p{
+            margin:15px 0;
+        }
+
+        .contact-info i{
+            color:#38bdf8;
+            margin-right:10px;
+        }
+
+        footer{
+            text-align:center;
+            padding:30px;
+            background:#020617;
+        }
+
+        .socials{
+            margin-top:20px;
+        }
+
+        .socials a{
+            color:#38bdf8;
+            margin:0 15px;
+            font-size:25px;
+        }
+
+        @media(max-width:768px){
+
+            nav ul{
+                display:none;
+            }
+
+            .hero-content{
+                grid-template-columns:1fr;
+                text-align:center;
+            }
+
+            .hero-text h1{
+                font-size:45px;
+            }
+
+            .hero-image img{
+                width:250px;
+                height:250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">Nyetoro</div>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="hero-text">
+            <h1>Nyetoro</h1>
+
+            <h2 id="typing"></h2>
+
+            <p>
+                I am a passionate Full Stack Developer specializing in creating
+                responsive, modern, and user-friendly web applications using
+                HTML, CSS, JavaScript, and React.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">View Projects</a>
+
+                <a href="#contact" class="btn secondary">Hire Me</a>
+
+                <a href="#" class="btn primary">
+                    Download CV
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <!-- Replace profile.jpg with your uploaded picture -->
+            <img src="file_00000000f08c7246849d7ec5727de8e5 (1).jpg" alt="Nyetoro">
+        </div>
+
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+
+        <p>
+            I am a Full Stack Developer with a strong passion for building
+            innovative web experiences. I enjoy turning ideas into reality
+            through clean code and modern design. My goal is to create digital
+            solutions that provide value to businesses and users alike.
+        </p>
+
+    </div>
+</section>
+
+<section id="skills">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <i class="fa-brands fa-html5"></i>
+                <h3>HTML5</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-css3-alt"></i>
+                <h3>CSS3</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-js"></i>
+                <h3>JavaScript</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-react"></i>
+                <h3>React</h3>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <h3>Restaurant Website</h3>
+                <p>
+                    A modern restaurant website featuring online reservations,
+                    menu display, testimonials, and responsive design.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Hotel Website</h3>
+                <p>
+                    Professional hotel platform with room showcases,
+                    booking features, and customer-friendly navigation.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>School Website</h3>
+                <p>
+                    Educational website including admissions, academic
+                    programs, announcements, and event management.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Car Dealership Website</h3>
+                <p>
+                    Vehicle showcase platform with filtering systems and
+                    detailed car information pages.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Services</h2>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Web Development</h3>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Responsive Design</h3>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Frontend Development</h3>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-gears"></i>
+                <h3>Website Maintenance</h3>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Contact Me</h2>
+        </div>
+
+        <div class="contact-info">
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                godpraise115@gmail.com
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                08146033339
+            </p>
+
+            <p>
+                <i class="fa-brands fa-github"></i>
+                github.com/nyetoro
+            </p>
+
+            <div class="socials">
+                <a href="https://github.com/nyetoro" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="mailto:godpraise115@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>
+        © 2026 Nyetoro. All Rights Reserved.
+    </p>
+</footer>
+
+<script>
+    const text = "Full Stack Developer";
+    let i = 0;
+
+    function typeEffect() {
+        if (i < text.length) {
+            document.getElementById("typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeEffect, 100);
+        }
+    }
+
+    window.onload = typeEffect;
+</script>
+
+</body>
+</html>
+</body>
+</html>
